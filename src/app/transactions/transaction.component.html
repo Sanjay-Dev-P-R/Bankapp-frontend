@@ -1,0 +1,69 @@
+<!-- navbar -->
+<nav class="navbar bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://icon-library.com/images/bank-icon-png/bank-icon-png-4.jpg" style="height: 36px; width:38px">
+            Zest Bank
+        </a>
+    </div>
+  </nav>
+  
+
+
+<!-- main content -->
+<div class="container">
+    <div class="row">
+        <h2 class="text-info text-center my-4">Transaction History</h2>
+
+        <div class="col-6 mt-3">
+            <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search">
+        </div>
+        <div class="col-6 mt-3">
+            <button style="float: right;" (click)=" generatePdf()" class="btn btn-info ">Export as pdf</button>
+
+        </div>
+
+    </div>
+    <div class="row-table mt-5">
+        <table class="table table-bordered border-primary">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">From Account</th>
+                    <th scope="col">To Account</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-active" *ngFor="let trans of transactions|search:searchTerm:'type'; let i=index">
+                    <th scope="row">{{i+1}}</th> <!-- index is to set 1 to 9 order in javascript -->
+                    <td>{{trans.type}}</td>
+                    <td>{{trans.fromAcno}}</td>
+                    <td>{{trans.toAcno}}</td>
+                    <td>{{trans.amount}}</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+        </table>
+
+
+    </div>
+</div>
+
+
+
+
+<!-- footer -->
+<footer class="bg-primary text-center text-white">
+  
+
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+    </div>
+    <!-- Copyright -->
+  </footer>

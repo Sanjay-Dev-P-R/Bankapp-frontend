@@ -1,0 +1,64 @@
+<!-- navbar -->
+<nav class="navbar bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://icon-library.com/images/bank-icon-png/bank-icon-png-4.jpg" style="height: 36px; width:38px">
+            Zest Bank
+        </a>
+    </div>
+</nav>
+<div *ngIf="RegisterSuccess" class="container text-center mt-5">
+<h1>Your Data is getting Registered....please wait<div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div></h1>
+</div>
+
+<!-- register form -->
+<div *ngIf="!RegisterSuccess" class="container">
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+    <div class="row" style="padding-left: 55px;">
+
+        <div class="col-6">
+            <img src="https://img.freepik.com/premium-vector/sign-page-abstract-concept-vector-illustration_107173-25670.jpg?w=2000" style="height: 500px;" alt="">
+        </div>
+        <div class="col-6 " style="padding-top: 80px; width:400px">
+            <div class="mb-3">
+                <label for="" class="form-label">Account Number</label>
+                <input type="text" name="acno" formControlName="acno" class="form-control" id="" aria-describedby="">
+                <div *ngIf="this.registerForm.get('acno')?.errors&&this.registerForm.get('acno')?.touched" class="text-danger">*Invalid Account Number</div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Full Name</label>
+                <input type="name" name="username" formControlName="username" class="form-control" id="">
+                <div *ngIf="this.registerForm.get('username')?.errors&&this.registerForm.get('username')?.touched" class="text-danger">*Invalid User name</div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Password</label>
+                <input type="password" name="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+                <div *ngIf="this.registerForm.get('password')?.errors&&this.registerForm.get('password')?.touched" class="text-danger">*Invalid Password</div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <h6 class="text-danger">{{RegisterError}}</h6>
+            <button type="submit" class="btn btn-primary">Register</button><br>
+            <div class="reg">
+                <span>Already Have an Account?</span><span class="re"><a routerLink="/">login Here</a></span>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+<!-- footer -->
+<footer class="bg-primary text-center text-white">
+    
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="#">bankapp.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
